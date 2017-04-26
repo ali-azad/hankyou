@@ -12,9 +12,6 @@ white() {
 aa() {
  sudo apt-get install
 }
-bb() {
- sudo luarocks install
-}
 function logo1_SinChi() {
 green "     >>>>               Welcome to SinChi bot                         <<<<      "
 white "     >>>>             I wanna install it for you                      <<<<      "
@@ -31,31 +28,31 @@ red     "                      ****************************                     
 red     "                      ****************************                                   "
 }
 function install_Sinchi() {
- sudo apt-get update 
- sudo apt-get upgrade 
-aa  libreadline-dev libconfig-dev libssl-dev lua5.2 liblua5.2-dev lua-socket lua-sec lua-expat libevent-dev make unzip git redis-server autoconf g++ libjansson-dev libpython-dev expat libexpat1-dev -y
- aa  lua-lgi -y
- aa  software-properties-common -y 
- sudo add-apt-repository ppa:ubuntu-toolchain-r/test  
- aa libstdc++6 -y
+ sudo apt-get update -y 
+ sudo apt-get upgrade -y
+ sudo apt-get install libreadline-dev libconfig-dev libssl-dev lua5.2 liblua5.2-dev lua-socket lua-sec lua-expat libevent-dev make unzip git redis-server autoconf g++ libjansson-dev libpython-dev expat libexpat1-dev -y
+sudo apt-get install lua-lgi -y
+sudo apt-get install software-properties-common -y
+sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
+sudo apt-get install libstdc++6 -y
+ sudo apt-get install libstdc++6 -y
  sudo apt-get update -y
  sudo apt-get upgrade -y
  sudo apt-get dist-upgrade -y
 }
 function luarocks_SinChi() {
- wget http://luarocks.org/releases/luarocks-2.2.2.tar.gz
+wget http://luarocks.org/releases/luarocks-2.2.2.tar.gz
  tar zxpf luarocks-2.2.2.tar.gz
  cd luarocks-2.2.2
  ./configure; sudo make bootstrap
- bb luasocket 
- bb luasec 
- bb redis-lua 
- bb lua-term 
- bb serpent
- bb dkjson 
- bb lanes 
- bb Lua-cURL 
- sudo service redis-server start
+ sudo luarocks install luasocket
+ sudo luarocks install luasec
+ sudo luarocks install redis-lua
+ sudo luarocks install lua-term
+ sudo luarocks install serpent
+ sudo luarocks install dkjson
+ sudo luarocks install lanes
+ sudo luarocks install Lua-cURL
  cd ..
 }
 function chmod_SinChi() {
