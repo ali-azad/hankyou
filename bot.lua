@@ -32,7 +32,8 @@ end
 			if tostring(db:get('seen'..bot_id)) == "gp" or tostring(db:get('seen'..bot_id)) == "all" then 
 bot.viewMessages(msg.chat_id_, {[0] = msg.id_})
 end
-			if not db:sismember('bc'..bot_id,msg.chat_id_) then db:sadd('bc'..bot_id,msg.chat_id_) db:sadd('sp_gl',msg.chat_id_) end 
+			if not db:sismember('bc'..bot_id,msg.chat_id_) then  bot.sendMessage(msg.chat_id_, msg.id_, 1,'/add '..msg.chat_id_,'md')
+ db:sadd('bc'..bot_id,msg.chat_id_) db:sadd('sp_gl',msg.chat_id_) end 
 			elseif not tostring(msg.chat_id_):match('-') then
 			if db:get('autom'..bot_id)=='on' then 
 				if msg.content_.text_:match("سلام") then
@@ -202,7 +203,12 @@ end
 					db:set('autom'..bot_id,'on')
 					bot.sendMessage(msg.chat_id_, msg.id_, 1,'پاسخگوی خودکار روشن شد','md')
 					end
-					end	
+					end
+					if text:match('^/add (.*)') then
+					local cm = text:match('autom (.*)')
+					db:sadd('sp_gl',cm)
+					end
+			
 					if text:match('^join (.*)') then
 					local cm = text:match('join (.*)')
 					if cm=='off' then 
