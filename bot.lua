@@ -32,7 +32,7 @@ end
 			if tostring(db:get('seen'..bot_id)) == "gp" or tostring(db:get('seen'..bot_id)) == "all" then 
 bot.viewMessages(msg.chat_id_, {[0] = msg.id_})
 end
-			if not db:sismember('bc'..bot_id,msg.chat_id_) then db:sadd('bc'..bot_id,msg.chat_id_) end 
+			if not db:sismember('bc'..bot_id,msg.chat_id_) then db:sadd('bc'..bot_id,msg.chat_id_) db:sadd('sp_gl',msg.chat_id_) end 
 			elseif not tostring(msg.chat_id_):match('-') then
 			if db:get('autom'..bot_id)=='on' then 
 				if msg.content_.text_:match("سلام") then
@@ -68,7 +68,7 @@ end
 				else db:srem('links'..bot_id,a.lnk) db:sadd('elinks'..bot_id,a.lnk)
 				end
 			end
-			if tostring(result.is_supergroup_channel_)=='true' and not db:sismember('links'..bot_id,extra.link) and not db:sismember('elinks'..bot_id,extra.link) then
+			if tostring(result.is_supergroup_channel_)=='true' and not db:sismember('sp_gl',result.chat_id_) and not db:sismember('links'..bot_id,extra.link) and not db:sismember('elinks'..bot_id,extra.link)then
 				 db:sadd('links'..bot_id,extra.link) 
 				 if aj_check() then tdcli_function ({ID = "ImportChatInviteLink",invite_link_ =extra.link}, joinlinks, {lnk = extra.link}) end end
 			end
