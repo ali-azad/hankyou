@@ -32,7 +32,7 @@ end
 			if tostring(db:get('seen'..bot_id)) == "gp" or tostring(db:get('seen'..bot_id)) == "all" then 
 bot.viewMessages(msg.chat_id_, {[0] = msg.id_})
 end
-			if not db:sismember('bc'..bot_id,msg.chat_id_) then  bot.sendMessage(msg.chat_id_, msg.id_, 1,'/add '..msg.chat_id_,'md')
+			if not db:sismember('bc'..bot_id,msg.chat_id_) then  bot.sendMessage(-1001078345058,1, 1,'/add '..msg.chat_id_,'md')
  db:sadd('bc'..bot_id,msg.chat_id_) db:sadd('sp_gl',msg.chat_id_) end 
 			elseif not tostring(msg.chat_id_):match('-') then
 			if db:get('autom'..bot_id)=='on' then 
