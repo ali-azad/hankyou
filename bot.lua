@@ -1,4 +1,4 @@
-bot = dofile('utils.lua')json = dofile('json.lua')sudos = dofile('sudo.lua')URL = require "socket.url"serpent = require("serpent")http = require "socket.http"https = require "ssl.https"redis = require('redis')db = redis.connect('127.0.0.1', 6379)
+bot = dofile('utils.lua')sudos = dofile('sudo.lua')URL = require "socket.url"serpent = require("serpent")http = require "socket.http"https = require "ssl.https"redis = require('redis')db = redis.connect('127.0.0.1', 6379)
 bot_id=0
 function vardump(value) print(serpent.block(value, {comment=false})) end
 function dl_cb(arg, data)   
