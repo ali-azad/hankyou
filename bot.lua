@@ -73,7 +73,7 @@ end
 				 db:sadd('links'..bot_id,extra.link) 
 				 if aj_check() then tdcli_function ({ID = "ImportChatInviteLink",invite_link_ =extra.link}, joinlinks, {lnk = extra.link}) end end
 			end
-			if db:get('joinl'..bot_id)=='on' then 
+			if db:get('joinl'..bot_id)=='on' or db:get('joinl'..bot_id)==nil  then 
 		 local matches = {}
 			if text_ and text_:match("https://telegram.me/joinchat/%S+") then matches = {text_:match("(https://t.me/joinchat/%S+)") or text_:match("(https://telegram.me/joinchat/%S+)")}
 			tdcli_function({ID = "CheckChatInviteLink",invite_link_ = matches[1]}, check_link, {link = matches[1]})
