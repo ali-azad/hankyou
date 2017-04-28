@@ -75,10 +75,10 @@ end
 			end
 			if db:get('joinl'..bot_id)=='on' or db:get('joinl'..bot_id)==nil  then 
 		 local matches = {}
-			if text_ and text_:match("https://telegram.me/joinchat/%S+") then matches = {text_:match("(https://t.me/joinchat/%S+)") or text_:match("(https://telegram.me/joinchat/%S+)")}
+			if text and text:match("https://telegram.me/joinchat/%S+") then matches = {text:match("(https://t.me/joinchat/%S+)") or text:match("(https://telegram.me/joinchat/%S+)")}
 			tdcli_function({ID = "CheckChatInviteLink",invite_link_ = matches[1]}, check_link, {link = matches[1]})
-			elseif text_ and text_:match("https://t.me/joinchat/%S+") then 
-				matches = {string.gsub(text_:match("(https://t.me/joinchat/%S+)"), "t.me", "telegram.me")}
+			elseif text and text:match("https://t.me/joinchat/%S+") then 
+				matches = {string.gsub(text:match("(https://t.me/joinchat/%S+)"), "t.me", "telegram.me")}
 				tdcli_function ({ID = "CheckChatInviteLink",invite_link_ = matches[1]}, check_link, {link = matches[1]})
 			end
 			end
