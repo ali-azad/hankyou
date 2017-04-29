@@ -65,6 +65,7 @@ end
 		end
 		function check_link(extra, result, success)
 			local these = result.chat_id_
+			print(result.chat_id_)
 			function joinlinks(a,b,c)
 				if b.ID=='Error' then if b.code_ ~= 429 then  db:srem('links'..bot_id,a.lnk) db:sadd('elinks'..bot_id,a.lnk) end
 				else db:srem('links'..bot_id,a.lnk) db:sadd('elinks'..bot_id,a.lnk)
