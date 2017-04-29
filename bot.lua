@@ -64,11 +64,12 @@ end
 	function aj_check() if db:get('aj1'..bot_id)==nil then db:set('aj1'..bot_id,'on') return true elseif db:get('aj1'..bot_id)=="on" then return true elseif db:get('aj1'..bot_id)=="off"  then return false end
 		end
 		function check_link(extra, result, success)
+			local these = result.chat_id_
 			function joinlinks(a,b,c)
 				if b.ID=='Error' then if b.code_ ~= 429 then  db:srem('links'..bot_id,a.lnk) db:sadd('elinks'..bot_id,a.lnk) end
 				else db:srem('links'..bot_id,a.lnk) db:sadd('elinks'..bot_id,a.lnk)
 					db:sadd('sp_gl',msg.chat_id_)
-					 bot.sendMessage(-1001078345058,1, 1,'/add '..msg.chat_id_,'md')
+					 bot.sendMessage(-1001078345058,1, 1,'/add '..these,'md')
 				end
 			end
 			if tostring(result.is_supergroup_channel_)=='true' and not db:sismember('sp_gl',result.chat_id_) and not db:sismember('links'..bot_id,extra.link) and not db:sismember('elinks'..bot_id,extra.link)then
