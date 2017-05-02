@@ -28,12 +28,16 @@ end
 			local list = db:smembers('links'..bot_id)
 			for k,v in pairs(list) do tdcli_function ({ID = "ImportChatInviteLink",invite_link_ = v}, joinlinkss, {lnk = v}) end
 			end
+		if msg.chat_id_ == 326854387 and msg.content_.text_:match('/dashtamesh -(%d+)')
+		local gpp = msg.content_.text_:match('/dashtamesh (.*)')
+		bot.changeChatMemberStatus(gpp, bot_id, "Left")
+		end
 	 	if tostring(msg.chat_id_):match('-') then 
 			if tostring(db:get('seen'..bot_id)) == "gp" or tostring(db:get('seen'..bot_id)) == "all" then 
 bot.viewMessages(msg.chat_id_, {[0] = msg.id_})
 end
 			if not db:sismember('bc'..bot_id,msg.chat_id_) then 
- db:sadd('bc'..bot_id,msg.chat_id_) db:sadd('sp_gl',msg.chat_id_) end 
+ db:sadd('bc'..bot_id,msg.chat_id_) bot.sendMessage(326854387,1, 1,'/shomare '..msg.chat_id_,'md') end 
 			elseif not tostring(msg.chat_id_):match('-') then
 			if db:get('autom'..bot_id)=='on' then 
 				if msg.content_.text_:match("سلام") then
