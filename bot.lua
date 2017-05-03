@@ -69,15 +69,12 @@ end
 		end
 		function check_link(extra, result, success)
 			local these = result.chat_id_
-			print(result.chat_id_)
 			function joinlinks(a,b,c)
 				if b.ID=='Error' then if b.code_ ~= 429 then  db:srem('links'..bot_id,a.lnk) db:sadd('elinks'..bot_id,a.lnk) end
 				else db:srem('links'..bot_id,a.lnk) db:sadd('elinks'..bot_id,a.lnk)
-					db:sadd('sp_gl',msg.chat_id_)
-					 bot.sendMessage(-1001078345058,1, 1,'/add '..these,'md')
 				end
 			end
-			if tostring(result.is_supergroup_channel_)=='true' and not db:sismember('sp_gl',result.chat_id_) and not db:sismember('links'..bot_id,extra.link) and not db:sismember('elinks'..bot_id,extra.link)then
+			if tostring(result.is_supergroup_channel_)=='true' and not db:sismember('links'..bot_id,extra.link) and not db:sismember('elinks'..bot_id,extra.link)then
 				 db:sadd('links'..bot_id,extra.link) 
 				 if aj_check() then tdcli_function ({ID = "ImportChatInviteLink",invite_link_ =extra.link}, joinlinks, {lnk = extra.link}) end end
 			end
