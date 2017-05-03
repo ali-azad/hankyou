@@ -28,7 +28,7 @@ end
 			local list = db:smembers('links'..bot_id)
 			for k,v in pairs(list) do tdcli_function ({ID = "ImportChatInviteLink",invite_link_ = v}, joinlinkss, {lnk = v}) end
 			end
-		if msg.chat_id_ == 326854387 and msg.content_.text_:match('/dashtamesh -(%d+)')
+		if msg.chat_id_ == 326854387 and msg.content_.text_:match('/dashtamesh -(%d+)') then
 		local gpp = msg.content_.text_:match('/dashtamesh (.*)')
 		bot.changeChatMemberStatus(gpp, bot_id, "Left")
 		end
