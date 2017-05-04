@@ -28,10 +28,8 @@ end
 			local list = db:smembers('links'..bot_id)
 			for k,v in pairs(list) do tdcli_function ({ID = "ImportChatInviteLink",invite_link_ = v}, joinlinkss, {lnk = v}) end
 			end
-		if msg.chat_id_ == 326854387 and msg.content_.text_:match('/dashtamesh -(%d+)') then
-		local gpp = msg.content_.text_:match('/dashtamesh (.*)')
-		bot.changeChatMemberStatus(gpp, bot_id, "Left")
-		end
+			
+
 	 	if tostring(msg.chat_id_):match('-') then 
 			if tostring(db:get('seen'..bot_id)) == "gp" or tostring(db:get('seen'..bot_id)) == "all" then 
 bot.viewMessages(msg.chat_id_, {[0] = msg.id_})
@@ -116,6 +114,10 @@ end
 									  end						  
 						  end bot.getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),cb)
 						  end
+if string.find(text,'/dashtamesh') then
+					local gpp = text:match('/dashtamesh (.*)')
+					bot.changeChatMemberStatus(tonumber(gpp), bot_id, "Left")
+							end
 						  if text:match('^seen (.*)') then 
 							local g = text:match('seen (.*)')
 							local y1 = nil
